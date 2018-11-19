@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=yes">
+<link rel="stylesheet" href="./css/demo.css">
+<script src="./js/demo.js"></script>
+<style>
+.another .title {
+   margin-top:35px; display:inline-block;
+}
+.another .title div {
+  border-bottom:solid 1px; width:280px; height:34px; margin-left:auto; margin-right:auto;
+}
+.another .msg {
+   margin-top:35px; display:inline-block; height:156px; padding-top:80px; color:#58a;
+}
+.another .btnbox input {
+  border:0;margin-left:20px;width:280px;height:32px; outline:none; font-size:14px;
+  letter-spacing:2px; color:#888; margin-top:3px; background-color:#fafafa;
+}
+.another .btnbox{
+  margin-left:auto; margin-right:auto; width:320px; height:40px; display:inline-block; margin-top:8px;
+}
+.another .btnbox .submitBtn {
+  background-color:#8af;opacity:1;width:320px; height:40px; border-radius:5px; margin:0px;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(2%,#abf), color-stop(10%,#8be), color-stop(100%,#28d));
+  background:-ms-linear-gradient(top, #abf, #28d);
+  background:-moz-gradient(linear, left top, left bottom, color-stop(2%,#abf), color-stop(10%,#8be), color-stop(100%,#28d));
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#abf', endColorstr='#28d',GradientType=0);
+  color:#fff; font-family:arial; font-weight:bold;
+}
+
+.another .btnbox .clickBtn {
+  background-color:#8af;opacity:1;width:320px; height:40px; border-radius:5px; margin-top:1px; margin-left:1px; 
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(2%,#abf), color-stop(10%,#8be), color-stop(100%,#28d));
+  background:-ms-linear-gradient(top, #abf, #28d);
+  background:-moz-gradient(linear, left top, left bottom, color-stop(2%,#abf), color-stop(10%,#8be), color-stop(100%,#28d));
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#abf', endColorstr='#28d',GradientType=0);
+  color:#fff; font-family:arial; font-weight:bold;
+}
+</style>
+<script type="text/javascript">
+function init() {
+    var btn = document.getElementById('btn');
+    btn.onmouseover = function () {
+        btn.style.cursor="pointer";
+    }
+    btn.onmousedown = function () {
+        btn.className='clickBtn';
+    }
+    btn.onmouseup = function () {
+        btn.className='submitBtn';
+    }
+    btn.onmouseout = function () {
+        btn.className='submitBtn';
+    }
+    btn.onclick = function () {
+        delCookie('user');
+        delCookie('isLogin');
+        delCookie('expires');
+        window.location="/entry.html";
+    }
+}
+window.onload=init;
+</script>
+</head>
+<body>
+<div class="another">
+  <div class="title"><div>SIGN IN SUCCESS</div></div>
+  <div class="msg">YOU ARE LOGGED IN!</div>
+  <div class="btnbox"><input id="btn" type="button" value="SIGN OUT" class="submitBtn"></div>
+</div>
+</body>
+</html>
