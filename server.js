@@ -3,7 +3,6 @@
  * Author: Xue Tao
  * Date:   2018-11-18
  * Mail:   mail2xt@163.com
- * Cellphone: 13853355903
  **************************/
  
 var http = require('http');
