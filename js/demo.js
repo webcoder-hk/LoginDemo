@@ -2,7 +2,6 @@
  * Author: Xue Tao
  * Date:   2018-11-17
  * Mail:   mail2xt@163.com
- * Cellphone: 13853355903
  **************************/
  
 function $() {
