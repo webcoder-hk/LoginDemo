@@ -1,19 +1,19 @@
 /**************************
  * Login Demo Server
  * Author: Xue Tao
- * Date:   2018-11-18
+ * Date:   2018-12-13
  * Mail:   mail2xt@163.com
  **************************/
- 
-var http = require('http');
-var fs = require('fs');
-var qs = require('querystring');
-var url = require('url');
-var path = require('path');
-var crypto = require('crypto');
-var util =require('util');
-var host = 'localhost';
-var port = 8080;
+
+const http = require('http');
+const fs = require('fs');
+const qs = require('querystring');
+const url = require('url');
+const path = require('path');
+const crypto = require('crypto');
+const util =require('util');
+const host = 'localhost';
+const port = 8080;
 console.log('Server started. Please visit "http://'+host+':'+port+'" in your browser.');
 
 function authentication(account){
@@ -36,7 +36,8 @@ function authentication(account){
 }
 
 http.createServer(function(req, res){
-    var pathname = url.parse(req.url).pathname.substr(1);
+    const myURL = new url.URL('http://'+req.headers['host']+req.url);
+    var pathname = myURL.pathname.substr(1);
     var contentTypes = {
         html:"text/html",
         js:"text/javascript",
@@ -62,7 +63,7 @@ http.createServer(function(req, res){
         req.on('data', function(chunk) {
             post += chunk;
         });
-        
+
         req.on('end', function(){
             post = qs.parse(post);
             var result = authentication(post);
@@ -70,11 +71,11 @@ http.createServer(function(req, res){
             res.end(result);
         });
     }
-    
+
     fs.exists(pathname, function(exists) {
         if(exists){
             res.writeHead(200, {"content-type":contentType});
-            var stream = fs.createReadStream(pathname,{flags:"r",encoding:null});
+            const stream = fs.createReadStream(pathname,{flags:"r",encoding:null});
             stream.on("error", function() {
                 res.writeHead(500,{"content-type": "text/html"});
                 res.end("<h1>500 Server Error</h1>");
